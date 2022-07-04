@@ -1,0 +1,7 @@
+{
+  "name": "liceth",
+  "integrations": {
+    "capacitor": {}
+  },
+  "type": "angular"
+}
