@@ -1,20 +1,29 @@
 <ion-header [translucent]="true">
-  <ion-toolbar>
+  <ion-toolbar color="primary">
     <ion-title>
-      Blank
+      Li compra en tu hogar
     </ion-title>
   </ion-toolbar>
 </ion-header>
 
 <ion-content [fullscreen]="true">
-  <ion-header collapse="condense">
-    <ion-toolbar>
-      <ion-title size="large">Blank</ion-title>
-    </ion-toolbar>
-  </ion-header>
+  <div class="container">
+    <ion-card>
+      <img [src]="'https://www.licompraentuhogar.com/'+data?.image" class="img"/>
+      <ion-card-header>
+        <ion-card-title [textContent]="data?.name_product"></ion-card-title>
+        <ion-card-subtitle [textContent]="'Código de barra: '+data?.code_barra"></ion-card-subtitle>
+        <ion-card-subtitle [textContent]="'Disponible: '+data?.available"></ion-card-subtitle>
+        <ion-card-subtitle color="primary" class="price" [textContent]="data?.price | currency"></ion-card-subtitle>
+      </ion-card-header>
+    </ion-card>
 
-  <div id="container">
-    <strong>Ready to create an app?</strong>
-    <p>Start with Ionic <a target="_blank" rel="noopener noreferrer" href="https://ionicframework.com/docs/components">UI Components</a></p>
+    <ion-button size="large" class="mt-auto"><ion-icon name="barcode-outline" class="margin-r"></ion-icon> Código</ion-button>
   </div>
 </ion-content>
+
+<!--<ion-footer collapse="fade">
+  <ion-toolbar>
+    <ion-title size="small">powered by EdgarJT</ion-title>
+  </ion-toolbar>
+</ion-footer>-->

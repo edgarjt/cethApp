@@ -1,4 +1,4 @@
-#container {
+.container {
   text-align: center;
 
   position: absolute;
@@ -24,4 +24,29 @@
 
 #container a {
   text-decoration: none;
+}
+
+.img {
+  width: 250px;
+}
+
+.margin-r {
+  margin-right: 5px;
+}
+
+.price {
+  font-size: 30px;
+  font-weight: bolder;
+}
+
+.mt-auto {
+  margin-top: 33px;
+}
+.description {
+  text-align: justify;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  display: -webkit-box;
+  -webkit-line-clamp: 4;
+
 }
