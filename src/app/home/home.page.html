@@ -1,11 +1,14 @@
-<ion-app>
-  <ion-header>
-    <ion-toolbar color="primary">
-      <ion-title>Li compra en tu hogar</ion-title>
-    </ion-toolbar>
-  </ion-header>
+<ion-header [translucent]="true">
+  <ion-toolbar color="primary">
+    <ion-buttons slot="start">
+      <ion-menu-button></ion-menu-button>
+    </ion-buttons>
+    <ion-title>{{ folder }}</ion-title>
+  </ion-toolbar>
+</ion-header>
 
-  <ion-content fullscreen="true">
-    <app-product></app-product>
-  </ion-content>
-</ion-app>
+<ion-content fullscreen="true">
+  <app-product></app-product>
+</ion-content>
+
+

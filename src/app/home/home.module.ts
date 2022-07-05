@@ -5,8 +5,8 @@ import { FormsModule } from '@angular/forms';
 import { HomePage } from './home.page';
 
 import { HomePageRoutingModule } from './home-routing.module';
-import {ProductComponent} from "../shared/product/product.component";
-import {SearchComponent} from "../shared/search/search.component";
+import { ProductComponent } from '../shared/product/product.component';
+import { SearchComponent } from '../shared/search/search.component';
 
 
 @NgModule({

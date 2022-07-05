@@ -1,6 +1,10 @@
 <app-search (resultSearch)="productSearch($event)"></app-search>
 
-<p *ngIf="empty, else prod">No hay productos que mostrar</p>
+<ion-card *ngIf="empty, else prod">
+  <ion-card-header>
+    <ion-card-subtitle>No hay productos que mostrar</ion-card-subtitle>
+  </ion-card-header>
+</ion-card>
 
 <ng-template #prod>
 <ion-card *ngFor="let item of data">
