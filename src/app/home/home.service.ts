@@ -13,10 +13,10 @@ export class HomeService
 
   constructor(private http: HttpClient)
   {
-    this.api = environment.apiUrl + '/api/mobile/products/search/';
+    this.api = environment.apiUrl + '/api/mobile/products/';
   }
 
-  getUsersVendors(): Observable<any> {
-    return this.http.get(this.api + '7501058620002');
+  searchProduct(product): Observable<any> {
+    return this.http.get(this.api + 'searchProduct/' + product);
   }
 }

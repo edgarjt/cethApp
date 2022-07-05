@@ -4,7 +4,8 @@
 
 export const environment = {
   production: false,
-  apiUrl: 'https://www.licompraentuhogar.com'
+  apiUrl: 'https://licompraentuhogar.com'
+  //apiUrl: 'http://ceth.net'
 };
 
 /*

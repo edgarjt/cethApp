@@ -1,0 +1,15 @@
+<app-search (resultSearch)="productSearch($event)"></app-search>
+
+<p *ngIf="empty, else prod">No hay productos que mostrar</p>
+
+<ng-template #prod>
+<ion-card *ngFor="let item of data">
+  <img [src]="url+item?.image" class="img"/>
+  <ion-card-header>
+    <ion-card-title [textContent]="item?.name_product"></ion-card-title>
+    <ion-card-subtitle [textContent]="'Código de barra: '+item?.code_barra"></ion-card-subtitle>
+    <ion-card-subtitle [textContent]="'Disponible: '+item?.available"></ion-card-subtitle>
+    <ion-card-subtitle color="primary" class="price" [textContent]="item?.price | currency"></ion-card-subtitle>
+  </ion-card-header>
+</ion-card>
+</ng-template>
