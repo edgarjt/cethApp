@@ -12,6 +12,7 @@ export class ProductComponent implements OnInit {
   public data: any;
   public url: string;
   public empty: boolean;
+  public load: boolean;
 
   constructor(private homeService: HomeService) {
     this.url = environment.apiUrl;
@@ -21,17 +22,24 @@ export class ProductComponent implements OnInit {
   ngOnInit() {}
 
   productSearch(data) {
+    console.log(data);
+    this.load = true;
+
     if (data === '') {
+      this.empty = true;
+      this.data = [];
+      this.load = false;
       return false;
     }
 
     this.homeService.searchProduct(data).subscribe(next => {
-      console.log(next.length);
       if (next.length === 0) {
         this.empty = true;
+        this.load = false;
       } else {
         this.empty = false;
         this.data = next;
+        this.load = false;
       }
     }, error => {
       console.log(error);

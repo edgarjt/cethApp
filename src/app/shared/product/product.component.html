@@ -1,8 +1,10 @@
-<app-search (resultSearch)="productSearch($event)"></app-search>
+<app-search (resultSearch)="productSearch($event)" (close)="test()"></app-search>
 
 <ion-card *ngIf="empty, else prod">
+  <ion-progress-bar type="indeterminate" *ngIf="load"></ion-progress-bar>
   <ion-card-header>
-    <ion-card-subtitle>No hay productos que mostrar</ion-card-subtitle>
+    <ion-card-subtitle *ngIf="!load">No hay productos que mostrar</ion-card-subtitle>
+    <ion-card-subtitle *ngIf="load">Buscando...</ion-card-subtitle>
   </ion-card-header>
 </ion-card>
 
