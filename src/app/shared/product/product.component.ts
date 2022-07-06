@@ -1,6 +1,7 @@
 import { Component, Input, OnInit } from '@angular/core';
 import { environment} from '../../../environments/environment';
 import { HomeService } from '../../home/home.service';
+import { AlertController } from '@ionic/angular';
 
 @Component({
   selector: 'app-product',
@@ -14,7 +15,10 @@ export class ProductComponent implements OnInit {
   public empty: boolean;
   public load: boolean;
 
-  constructor(private homeService: HomeService) {
+  constructor(
+    private homeService: HomeService,
+    private alertController: AlertController
+  ) {
     this.url = environment.apiUrl;
     this.empty = true;
   }
@@ -44,5 +48,15 @@ export class ProductComponent implements OnInit {
     }, error => {
       console.log(error);
     });
+  }
+
+  async presentAlert() {
+    const alert = await this.alertController.create({
+      header: 'Agregado',
+      message: 'El producto se agrego a la lista',
+      buttons: ['OK']
+    });
+
+    await alert.present();
   }
 }

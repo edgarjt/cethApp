@@ -15,7 +15,26 @@
     <ion-card-title [textContent]="item?.name_product"></ion-card-title>
     <ion-card-subtitle [textContent]="'Código de barra: '+item?.code_barra"></ion-card-subtitle>
     <ion-card-subtitle [textContent]="'Disponible: '+item?.available"></ion-card-subtitle>
-    <ion-card-subtitle color="primary" class="price" [textContent]="item?.price | currency"></ion-card-subtitle>
+
+    <ion-grid>
+      <ion-row>
+        <ion-col>
+          <div>
+            <ion-card-subtitle color="primary" class="price" [textContent]="item?.price | currency"></ion-card-subtitle>
+          </div>
+        </ion-col>
+        <ion-col>
+          <div class="ion-text-end">
+            <ion-button (click)="presentAlert()" [disabled]="(!item?.available)">
+              <ion-icon name="list-outline"></ion-icon>
+            </ion-button>
+          </div>
+        </ion-col>
+      </ion-row>
+    </ion-grid>
+
+
+
   </ion-card-header>
 </ion-card>
 </ng-template>
