@@ -7,6 +7,7 @@ import { HomePage } from './home.page';
 import { HomePageRoutingModule } from './home-routing.module';
 import { ProductComponent } from '../shared/product/product.component';
 import { SearchComponent } from '../shared/search/search.component';
+import { HeaderComponent } from '../shared/header/header.component';
 
 
 @NgModule({
@@ -16,6 +17,9 @@ import { SearchComponent } from '../shared/search/search.component';
     IonicModule,
     HomePageRoutingModule
   ],
-  declarations: [HomePage, ProductComponent, SearchComponent]
+  exports: [
+    HeaderComponent
+  ],
+  declarations: [HomePage, ProductComponent, SearchComponent, HeaderComponent]
 })
 export class HomePageModule {}
