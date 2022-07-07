@@ -25,7 +25,7 @@
         </ion-col>
         <ion-col>
           <div class="ion-text-end">
-            <ion-button (click)="presentAlert()" [disabled]="(!item?.available)">
+            <ion-button (click)="presentAlert(item)" [disabled]="(!item?.available)">
               <ion-icon name="list-outline"></ion-icon>
             </ion-button>
           </div>

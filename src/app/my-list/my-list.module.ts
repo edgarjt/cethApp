@@ -7,7 +7,7 @@ import { IonicModule } from '@ionic/angular';
 import { MyListPageRoutingModule } from './my-list-routing.module';
 
 import { MyListPage } from './my-list.page';
-import {HomePageModule} from "../home/home.module";
+import { HomePageModule } from '../home/home.module';
 
 @NgModule({
   imports: [

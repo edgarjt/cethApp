@@ -14,6 +14,7 @@ export class ProductComponent implements OnInit {
   public url: string;
   public empty: boolean;
   public load: boolean;
+  public productList = [];
 
   constructor(
     private homeService: HomeService,
@@ -23,7 +24,15 @@ export class ProductComponent implements OnInit {
     this.empty = true;
   }
 
-  ngOnInit() {}
+  ngOnInit() {
+    const dataStorage = JSON.parse(localStorage.getItem('list'));
+
+    if (dataStorage) {
+      for (let item of dataStorage) {
+        this.productList.push(item);
+      }
+    }
+  }
 
   productSearch(data) {
     console.log(data);
@@ -50,10 +59,29 @@ export class ProductComponent implements OnInit {
     });
   }
 
-  async presentAlert() {
+  async presentAlert(data) {
+
+      const searchProduct = this.productList.find(element => element.codeBarra == data.code_barra);
+      let message_alert = 'Producto agregado a mi lista';
+
+      if (searchProduct) {
+        message_alert = 'El producto ya esta mi lista';
+      }else {
+        const params = {
+          nameProduct: data.name_product,
+          price: data.price,
+          codeBarra: data.code_barra,
+          image: data.image,
+          quantity: 1,
+          total: data.price
+        };
+        this.productList.push(params);
+        localStorage.setItem('list', JSON.stringify(this.productList));
+      }
+
     const alert = await this.alertController.create({
-      header: 'Agregado',
-      message: 'El producto se agrego a la lista',
+      header: data.name_product,
+      message: message_alert,
       buttons: ['OK']
     });
 
