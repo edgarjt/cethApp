@@ -1,7 +1,7 @@
 import { Component, Input, OnInit } from '@angular/core';
 import { environment} from '../../../environments/environment';
 import { HomeService } from '../../home/home.service';
-import { AlertController } from '@ionic/angular';
+import { AlertController, ToastController } from '@ionic/angular';
 
 @Component({
   selector: 'app-product',
@@ -18,7 +18,8 @@ export class ProductComponent implements OnInit {
 
   constructor(
     private homeService: HomeService,
-    private alertController: AlertController
+    private alertController: AlertController,
+    public toastController: ToastController
   ) {
     this.url = environment.apiUrl;
     this.empty = true;
@@ -60,12 +61,13 @@ export class ProductComponent implements OnInit {
   }
 
   async presentAlert(data) {
-
       const searchProduct = this.productList.find(element => element.codeBarra == data.code_barra);
       let message_alert = 'Producto agregado a mi lista';
+      let colorAlert = 'dark';
 
       if (searchProduct) {
         message_alert = 'El producto ya esta mi lista';
+        colorAlert = 'danger';
       }else {
         const params = {
           nameProduct: data.name_product,
@@ -79,12 +81,16 @@ export class ProductComponent implements OnInit {
         localStorage.setItem('list', JSON.stringify(this.productList));
       }
 
-    const alert = await this.alertController.create({
-      header: data.name_product,
+    const toast = await this.toastController.create({
       message: message_alert,
-      buttons: ['OK']
+      duration: 2000,
+      color: colorAlert
     });
+    toast.present();
+  }
 
-    await alert.present();
+  clearProduct(data) {
+    this.data = data;
+    this.empty = true;
   }
 }

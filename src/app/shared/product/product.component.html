@@ -1,4 +1,4 @@
-<app-search (resultSearch)="productSearch($event)" (close)="test()"></app-search>
+<app-search (resultSearch)="productSearch($event)" (cleanInput)="clearProduct($event)"></app-search>
 
 <ion-card *ngIf="empty, else prod">
   <ion-progress-bar type="indeterminate" *ngIf="load"></ion-progress-bar>
