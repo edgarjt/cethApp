@@ -18,7 +18,6 @@ export class ProductComponent implements OnInit {
 
   constructor(
     private homeService: HomeService,
-    private alertController: AlertController,
     public toastController: ToastController
   ) {
     this.url = environment.apiUrl;

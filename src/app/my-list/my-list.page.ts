@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import {environment} from '../../environments/environment';
+import { environment } from '../../environments/environment';
 
 @Component({
   selector: 'app-my-list',
@@ -10,9 +10,11 @@ export class MyListPage implements OnInit {
   products = [];
   url: string;
   message: string;
+  phone: string;
 
   constructor() {
     this.url = environment.apiUrl;
+    this.phone = environment.phone;
   }
 
   ngOnInit() {

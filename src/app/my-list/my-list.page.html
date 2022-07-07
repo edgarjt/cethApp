@@ -31,7 +31,7 @@
     <ion-title slot="start"> Total: {{getTotal() | currency}} </ion-title>
     <ion-buttons slot="end" *ngIf="products.length > 0">
       <!--https://api.whatsapp.com/send?phone=9934456273&text=Hola+buenos+dias%2C+quiero+hacer+el+pedido+de+los+sigueintes+productos%3A%0D%0A-+test1%0D%0A-test%0D%0A-test3"-->
-      <a href="https://api.whatsapp.com/send?phone=9934456273&text=*Hola+buenos+días%2C+quiero+hacer+el+pedido+de+los+siguientes+productos*%3A%0D%0A{{getProductList()}}" target="_blank">
+      <a href="https://api.whatsapp.com/send?phone={{phone}}&text=*Hola+buenos+días%2C+quiero+hacer+el+pedido+de+los+siguientes+productos*%3A%0D%0A{{getProductList()}}" target="_blank">
         <ion-icon name="logo-whatsapp" color="success" size="large"></ion-icon>
       </a>
     </ion-buttons>
