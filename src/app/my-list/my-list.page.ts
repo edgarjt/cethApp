@@ -36,7 +36,7 @@ export class MyListPage implements OnInit {
   }
 
   getTotal() {
-    return this.products.map((t: any) => t).reduce((acc: number, value: any) => acc + parseFloat(value.total), 0);
+    return this.products.map((t: any) => t).reduce((acc: number, value: any) => acc + parseFloat(value.total) * value.quantity, 0);
   }
 
   getProductList() {
