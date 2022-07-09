@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { environment } from '../../environments/environment';
+import { ToastController } from '@ionic/angular';
 
 @Component({
   selector: 'app-my-list',
@@ -13,13 +14,17 @@ export class MyListPage implements OnInit {
   phone: string;
   conversation: string;
 
-  constructor() {
+  constructor(public toastController: ToastController) {
     this.url = environment.apiUrl;
     this.phone = environment.phone;
     this.conversation = environment.conversation;
   }
 
   ngOnInit() {
+    this.getProducts();
+  }
+
+  getProducts() {
     const products = JSON.parse(localStorage.getItem('list'));
 
     if (products) {
@@ -50,8 +55,9 @@ export class MyListPage implements OnInit {
 
   addQuantity(item) {
     if (item.quantity === item.available) {
+      this.presentToast('La cantidad sobrepasa la existencia', 'danger');
       return false;
-      }
+    }
 
     item.quantity++;
     item.total = item.quantity * item.price;
@@ -68,7 +74,26 @@ export class MyListPage implements OnInit {
     localStorage.setItem('list', JSON.stringify(this.products));
   }
 
+  doRefresh(event) {
+    console.log('Begin async operation');
+
+    setTimeout(() => {
+      console.log('Async operation has ended');
+      event.target.complete();
+      this.getProducts();
+    }, 2000);
+  }
+
   getTotal() {
     return this.products.map((t: any) => t).reduce((acc: number, value: any) => acc + parseFloat(value.total), 0);
+  }
+
+  async presentToast(message, color) {
+    const toast = await this.toastController.create({
+      message: message,
+      duration: 2000,
+      color: color
+    });
+    toast.present();
   }
 }

@@ -1,6 +1,10 @@
 <app-header title="Mis listas"></app-header>
 
 <ion-content fullscreen="true">
+  <ion-refresher slot="fixed" (ionRefresh)="doRefresh($event)">
+    <ion-refresher-content></ion-refresher-content>
+  </ion-refresher>
+
   <ion-list>
     <ion-list-header lines="inset">
       <ion-label>Listado de productos</ion-label>
