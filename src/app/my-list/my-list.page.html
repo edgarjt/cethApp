@@ -6,7 +6,8 @@
       <ion-label>Listado de productos</ion-label>
       <ion-button
         [disabled]="(products.length===0)"
-        (click)="cleanList()">Borrar todo</ion-button>
+        (click)="cleanList()">Borrar todo
+      </ion-button>
     </ion-list-header>
 
     <ion-item *ngFor="let item of products; let i = index">
@@ -18,22 +19,35 @@
         <h3 [textContent]="'Precio: ' + (item.price | currency)"></h3>
         <h3 [textContent]="'Cantidad: '+item.quantity"></h3>
         <h3 [textContent]="'Total: ' + (item.total | currency)"></h3>
+        <ion-button (click)="addQuantity(item)" color="info">
+          <ion-icon name="add-outline" color="dark"></ion-icon>
+        </ion-button>
+
+        <ion-button (click)="removeQuantity(item)" color="info">
+          <ion-icon name="remove-outline" color="dark"></ion-icon>
+        </ion-button>
+
         <ion-button (click)="deleteProduct(i)">
           <ion-icon name="trash-outline"></ion-icon>
         </ion-button>
       </ion-label>
     </ion-item>
   </ion-list>
+
+  <!-- fab placed to the top end -->
+  <ion-fab vertical="bottom" horizontal="end" slot="fixed" *ngIf="products.length > 0">
+    <a
+      href="https://api.whatsapp.com/send?phone={{phone}}&text=*Hola+buenos+días%2C+quiero+hacer+el+pedido+de+los+siguientes+productos*%3A%0D%0A{{getProductList()}}"
+      target="_blank">
+      <ion-fab-button>
+        <ion-icon name="logo-whatsapp"></ion-icon>
+      </ion-fab-button>
+    </a>
+  </ion-fab>
 </ion-content>
 
 <ion-footer>
   <ion-toolbar>
     <ion-title slot="start"> Total: {{getTotal() | currency}} </ion-title>
-    <ion-buttons slot="end" *ngIf="products.length > 0">
-      <!--https://api.whatsapp.com/send?phone=9934456273&text=Hola+buenos+dias%2C+quiero+hacer+el+pedido+de+los+sigueintes+productos%3A%0D%0A-+test1%0D%0A-test%0D%0A-test3"-->
-      <a href="https://api.whatsapp.com/send?phone={{phone}}&text=*Hola+buenos+días%2C+quiero+hacer+el+pedido+de+los+siguientes+productos*%3A%0D%0A{{getProductList()}}" target="_blank">
-        <ion-icon name="logo-whatsapp" color="success" size="large"></ion-icon>
-      </a>
-    </ion-buttons>
   </ion-toolbar>
 </ion-footer>

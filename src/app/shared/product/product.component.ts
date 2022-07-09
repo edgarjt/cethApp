@@ -74,7 +74,8 @@ export class ProductComponent implements OnInit {
           codeBarra: data.code_barra,
           image: data.image,
           quantity: 1,
-          total: data.price
+          total: data.price,
+          available: data.available
         };
         this.productList.push(params);
         localStorage.setItem('list', JSON.stringify(this.productList));

@@ -50,4 +50,22 @@ export class MyListPage implements OnInit {
     }
   }
 
+  addQuantity(item) {
+    if (item.quantity === item.available) {
+      return false;
+      }
+
+    item.quantity++;
+    localStorage.setItem('list', JSON.stringify(this.products));
+  }
+
+  removeQuantity(item) {
+    if (item.quantity === 1) {
+      return false;
+    }
+
+    item.quantity--;
+    localStorage.setItem('list', JSON.stringify(this.products));
+  }
+
 }
