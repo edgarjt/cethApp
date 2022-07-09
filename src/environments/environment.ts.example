@@ -1,5 +1,6 @@
 export const environment = {
   production: false,
   apiUrl: 'https://licompraentuhogar.com',
-  phone:  '9934456273'
+  phone:  '9934456273',
+  conversation: 'Aqui va el mensaje del cliente'
 };

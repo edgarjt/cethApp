@@ -11,10 +11,12 @@ export class MyListPage implements OnInit {
   url: string;
   message: string;
   phone: string;
+  conversation: string;
 
   constructor() {
     this.url = environment.apiUrl;
     this.phone = environment.phone;
+    this.conversation = environment.conversation;
   }
 
   ngOnInit() {
@@ -35,10 +37,6 @@ export class MyListPage implements OnInit {
     localStorage.setItem('list', JSON.stringify(this.products));
   }
 
-  getTotal() {
-    return this.products.map((t: any) => t).reduce((acc: number, value: any) => acc + parseFloat(value.total) * value.quantity, 0);
-  }
-
   getProductList() {
     if (this.products) {
       let message = '';
@@ -56,6 +54,7 @@ export class MyListPage implements OnInit {
       }
 
     item.quantity++;
+    item.total = item.quantity * item.price;
     localStorage.setItem('list', JSON.stringify(this.products));
   }
 
@@ -65,7 +64,11 @@ export class MyListPage implements OnInit {
     }
 
     item.quantity--;
+    item.total = item.total - item.price;
     localStorage.setItem('list', JSON.stringify(this.products));
   }
 
+  getTotal() {
+    return this.products.map((t: any) => t).reduce((acc: number, value: any) => acc + parseFloat(value.total), 0);
+  }
 }
